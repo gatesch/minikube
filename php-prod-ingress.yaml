@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/rewrite-target: /
+    ingress.kubernetes.io/add-base-url: "true"
+  name: php-ingress
+  namespace: php-prod
+spec:
+    rules:
+      - host: php-prod.example.loc
+        http:
+          paths:
+          - path: /
+            backend:
+              serviceName: php-service
+              servicePort: 80
