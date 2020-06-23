@@ -28,7 +28,7 @@ def answerQuestion = ''
 
         // Build Docker image
         stage 'Build'
-        sh "sudo docker build -t quay.io/gatesch/php:${gitCommit()} ."
+        sh "docker build -t quay.io/gatesch/php:${gitCommit()} ."
 
         // Login to DTR 
         stage 'Login'
@@ -40,11 +40,11 @@ def answerQuestion = ''
                 usernameVariable: 'DTR_USERNAME'
             ]]
         ){ 
-        sh "sudo docker login -u admin -p ${env.DTR_PASSWORD}  quay.io"}
+        sh "docker login -u admin -p ${env.DTR_PASSWORD}  quay.io"}
 
         // Push the image 
         stage 'Push'
-        sh "sudo docker push quay.io/gatesch/php:${gitCommit()}"
+        sh "docker push quay.io/gatesch/php:${gitCommit()}"
 
 //        clean all
           stage('Deploy test') 
