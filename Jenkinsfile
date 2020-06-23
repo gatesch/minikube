@@ -70,9 +70,9 @@ def answerQuestion = ''
  //       sh "./selenium-test.py"
   //  }
 
- //       stage('Deploy approval'){
-//             input "Deploy to prod?"
- //       }
+        stage('Deploy approval'){
+             input "Deploy to prod?"
+        }
 	
 	node {
         stage('Deploy prod')
