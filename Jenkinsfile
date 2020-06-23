@@ -66,9 +66,9 @@ def answerQuestion = ''
            }
 
         // functional test
-//        stage 'Selenium'
- //       sh "./selenium-test.py"
-  //  }
+        stage 'Selenium'
+        sh "./selenium-test.py"
+    }
 
         stage('Deploy approval'){
              input "Deploy to prod?"
