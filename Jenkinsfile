@@ -28,7 +28,7 @@ def answerQuestion = ''
 
         // Build Docker image
         stage 'Build'
-        sh "sudo docker build -t harbor.example.loc/library/php:${gitCommit()} ."
+        sh "sudo docker build -t quay.io/gatesch/php:${gitCommit()} ."
 
         // Login to DTR 
         stage 'Login'
@@ -40,11 +40,11 @@ def answerQuestion = ''
                 usernameVariable: 'DTR_USERNAME'
             ]]
         ){ 
-        sh "sudo docker login -u admin -p ${env.DTR_PASSWORD}  harbor.example.loc"}
+        sh "sudo docker login -u admin -p ${env.DTR_PASSWORD}  quay.io"}
 
         // Push the image 
         stage 'Push'
-        sh "sudo docker push harbor.example.loc/library/php:${gitCommit()}"
+        sh "sudo docker push quay.io/gatesch/php:${gitCommit()}"
 
 //        clean all
           stage('Deploy test') 
@@ -54,25 +54,25 @@ def answerQuestion = ''
           }
 
           if ( answerQ != "" ) {
-                sh "kubectl set image deployment php-safe -n php php=harbor.example.loc/library/php:${gitCommit()}"
+                sh "kubectl set image deployment php-safe -n php php=quay.io/gatesch/php:${gitCommit()}"
            }
 
            else {
                 sh "kubectl create ns php"
         	sh "kubectl create -f limits.yaml"
-        	sh "kubectl create deployment php-safe -n php --image=harbor.example.loc/library/php:${gitCommit()}"
+        	sh "kubectl create deployment php-safe -n php --image=quay.io/gatesch/php:${gitCommit()}"
         	sh "kubectl expose deployment php-safe --port=80 --name=php-service -n php"
         	sh "kubectl create -f php-ingress.yaml"
            }
 
         // functional test
-        stage 'Selenium'
-        sh "./selenium-test.py"
-    }
+//        stage 'Selenium'
+ //       sh "./selenium-test.py"
+  //  }
 
-        stage('Deploy approval'){
-             input "Deploy to prod?"
-        }
+ //       stage('Deploy approval'){
+//             input "Deploy to prod?"
+ //       }
 	
 	node {
         stage('Deploy prod')
