@@ -82,13 +82,13 @@ def answerQuestion = ''
           }
 
           if ( answerP != "" ) {
-                sh "kubectl set image deployment php-safe -n php-prod php=harbor.example.loc/library/php:${gitCommit()}"
+                sh "kubectl set image deployment php-safe -n php-prod php=quay.io/gatesch/php:${gitCommit()}"
            }
 
            else {
                 sh "kubectl create ns php-prod"
                 sh "kubectl create -f limits-prod.yaml"
-                sh "kubectl create deployment php-safe -n php-prod --image=harbor.example.loc/library/php:${gitCommit()}"
+                sh "kubectl create deployment php-safe -n php-prod --image=quay.io/gatesch/php:${gitCommit()}"
                 sh "kubectl expose deployment php-safe --port=80 --name=php-service -n php-prod"
                 sh "kubectl create -f php-prod-ingress.yaml"
                 sh "kubectl autoscale deployment php-safe --cpu-percent=50 --min=1 --max=10 -n php-prod"

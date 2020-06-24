@@ -3,3 +3,8 @@
 1592985627383	Marionette	INFO	Listening on port 34239
 1592985627419	Marionette	WARN	TLS certificate errors will be ignored for this session
 1592985628875	Marionette	INFO	Stopped listening on port 34239
+1592993081534	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile9hctKF"
+*** You are running in headless mode.
+1592993083206	Marionette	INFO	Listening on port 38743
+1592993083240	Marionette	WARN	TLS certificate errors will be ignored for this session
+1592993084518	Marionette	INFO	Stopped listening on port 38743
