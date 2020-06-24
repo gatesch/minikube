@@ -40,7 +40,7 @@ def answerQuestion = ''
                 usernameVariable: 'DTR_USERNAME'
             ]]
         ){ 
-        sh "docker login -u admin -p ${env.DTR_PASSWORD}  quay.io"}
+        sh "docker login -u gatesch -p ${env.DTR_PASSWORD}  quay.io"}
 
         // Push the image 
         stage 'Push'
