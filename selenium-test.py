@@ -6,7 +6,7 @@ options.headless = True
 driver = webdriver.Firefox(executable_path='/usr/local/bin/geckodriver',options=options)
 #
 #open connection
-driver.get('http://php.example.loc')
+driver.get('http://php.tesch.loc')
 get_title = driver.title
 print("The website is running, the title is: ")
 print(get_title)

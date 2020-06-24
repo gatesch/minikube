@@ -9,7 +9,7 @@ metadata:
   namespace: php
 spec:
     rules:
-      - host: php.example.loc
+      - host: php.tesch.loc
         http:
           paths:
           - path: /
