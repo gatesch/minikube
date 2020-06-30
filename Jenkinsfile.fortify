@@ -16,10 +16,15 @@ def answerQuestion = ''
         stage 'Unit Test'
         sh "phpunit --bootstrap src/Email.php tests"
 
-        // SonarQube
-        stage 'SCA / SonarQube'
-        sh "sonar-scanner -Dsonar.projectKey=php -Dsonar.sources=. -Dsonar.host.url=http://sonar.tesch.loc -Dsonar.login=ddfaf4f6969c39bb54559254bedea12f266d712f"
-        
+//        stage 'SCA / Nexus'
+//        sh "/opt/Fortify/Fortify_SCA_and_Apps_19.1.0/bin/sourceanalyzer -b openshift-mf -clean"
+ //       sh "/opt/Fortify/Fortify_SCA_and_Apps_19.1.0/bin/sourceanalyzer -b openshift-mf *.php"
+  //      sh "/opt/Fortify/Fortify_SCA_and_Apps_19.1.0/bin/sourceanalyzer -b openshift-mf -scan -mt -f openshift-mf.fpr"
+   //     sh "/opt/Fortify/Fortify_SCA_and_Apps_19.1.0/bin/ReportGenerator -format xml -source openshift-mf.fpr -f test.xml"
+    //    sh "/opt/Fortify/Fortify_SCA_and_Apps_19.1.0/bin/ReportGenerator -format rtf -source openshift-mf.fpr -f test.rtf"
+
+     //   sh "curl -v -u admin:redhat12 --upload-file test.rtf http://nexus.example.loc/repository/reports/report`date +%F-%T`.rtf"
+
 
         // Build Docker image
         stage 'Build'
