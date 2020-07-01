@@ -18,7 +18,7 @@ def answerQuestion = ''
 
         // SonarQube
         stage 'SCA / SonarQube'
-        sh "/opt/sonar/bin/sonar-scanner -Dsonar.projectKey=php -Dsonar.sources=. -Dsonar.host.url=http://sonar.tesch.loc -Dsonar.login=ddfaf4f6969c39bb54559254bedea12f266d712f"
+        sh "/opt/sonar/bin/sonar-scanner -Dsonar.projectKey=php -Dsonar.sources=. -Dsonar.host.url=http://sonar.tesch.loc -Dsonar.login=503a334e716877d70432d29aa4247b212123bc0a"
         
 
         // Build Docker image
